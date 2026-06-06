@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skills &amp; Expertise | Muhammad Shahzaib</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #131318;
+            color: #E8E8F0;
+            overflow-x: hidden;
+        }
+        .custom-cursor {
+            width: 10px;
+            height: 10px;
+            background: #00D4FF;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+        .cursor-ring {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #00D4FF;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e5deff",
+                        "on-secondary-container": "#baaeff",
+                        "outline": "#859398",
+                        "inverse-primary": "#00677e",
+                        "surface-bright": "#39383e",
+                        "text-primary": "#E8E8F0",
+                        "on-primary-fixed-variant": "#004e5f",
+                        "on-tertiary-fixed": "#281900",
+                        "on-error-container": "#ffdad6",
+                        "tag-border": "#2A2A4A",
+                        "surface": "#131318",
+                        "inverse-on-surface": "#303036",
+                        "surface-container-lowest": "#0e0e13",
+                        "outline-variant": "#3c494e",
+                        "tertiary-fixed-dim": "#ffba3d",
+                        "nav-glass": "rgba(10, 10, 15, 0.85)",
+                        "surface-variant": "#35343a",
+                        "on-surface": "#e4e1e9",
+                        "on-surface-variant": "#bbc9cf",
+                        "surface-dim": "#131318",
+                        "surface-container-low": "#1b1b20",
+                        "surface-tint": "#3cd7ff",
+                        "on-tertiary": "#432c00",
+                        "on-secondary": "#2e009c",
+                        "secondary-container": "#4720ca",
+                        "on-tertiary-fixed-variant": "#604100",
+                        "on-tertiary-container": "#6c4900",
+                        "tertiary-container": "#feb528",
+                        "surface-alternate": "#0D0D16",
+                        "primary-fixed-dim": "#3cd7ff",
+                        "secondary": "#c9bfff",
+                        "on-secondary-fixed": "#1a0063",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdeae",
+                        "on-primary": "#003642",
+                        "background": "#131318",
+                        "inverse-surface": "#e4e1e9",
+                        "surface-card": "#111118",
+                        "on-primary-container": "#00586b",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#c9bfff",
+                        "tertiary": "#ffd9a1",
+                        "on-primary-fixed": "#001f27",
+                        "border-subtle": "#1E1E2E",
+                        "surface-container-highest": "#35343a",
+                        "primary-container": "#00d4ff",
+                        "on-secondary-fixed-variant": "#441cc8",
+                        "primary-fixed": "#b4ebff",
+                        "surface-container-high": "#2a292f",
+                        "surface-container": "#1f1f25",
+                        "tag-bg": "#1A1A2E",
+                        "primary": "#a8e8ff",
+                        "on-background": "#e4e1e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "container-max": "1200px",
+                        "card-padding": "32px",
+                        "section-gap-mobile": "64px",
+                        "grid-gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "display-xl": ["Space Grotesk"],
+                        "mono-code": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "display-xl-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-base": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["13px", {"lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                        "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "mono-code": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-xl-mobile": ["42px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-base": ["17px", {"lineHeight": "1.7", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background selection:bg-primary/30 selection:text-primary">
+<div class="custom-cursor hidden md:block"></div>
+<div class="cursor-ring hidden md:block"></div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-nav-glass backdrop-blur-md border-b border-outline-variant/30 shadow-[0_0_20px_rgba(0,212,255,0.05)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-container-max mx-auto">
+<span class="font-display-xl-mobile text-display-xl-mobile font-bold text-primary tracking-tighter">MS</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Projects</a>
+<a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Experience</a>
+<a class="font-body-base text-body-base text-primary font-bold border-b-2 border-primary pb-1" href="#">Skills</a>
+<a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Certifications</a>
+</div>
+<button class="bg-primary-container text-on-primary font-bold px-6 py-2 rounded-lg hover:scale-95 transition-transform duration-300">Resume</button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Skills Section -->
+<section class="bg-surface-alternate py-[120px]">
+<div class="max-w-container-max mx-auto px-6">
+<!-- Header -->
+<div class="mb-16">
+<span class="font-mono-code text-label-caps text-primary mb-4 block">// TECHNICAL SKILLS</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary mb-6 md:w-2/3">What I Work With</h2>
+<p class="font-body-base text-body-base text-on-surface-variant md:w-1/2">
+                        A curated stack of technologies I use to design, build, and ship production-grade applications.
+                    </p>
+</div>
+<!-- Skill Rows -->
+<div class="space-y-0">
+<!-- Row Template: Repeat for all categories -->
+<div class="flex flex-col md:flex-row items-start py-8 border-b border-border-subtle group">
+<div class="md:w-1/4 mb-4 md:mb-0">
+<span class="font-mono-code text-[12px] text-primary min-w-[80px] uppercase block tracking-widest">// FRONTEND</span>
+</div>
+<div class="md:w-3/4 flex flex-wrap gap-3">
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">React</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">HTML5</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">CSS3</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">JavaScript ES6+</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Phaser.js</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-start py-8 border-b border-border-subtle group">
+<div class="md:w-1/4 mb-4 md:mb-0">
+<span class="font-mono-code text-[12px] text-primary min-w-[80px] uppercase block tracking-widest">// BACKEND</span>
+</div>
+<div class="md:w-3/4 flex flex-wrap gap-3">
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Node.js</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Express.js</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">REST APIs</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">MongoDB</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Mongoose</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-start py-8 border-b border-border-subtle group">
+<div class="md:w-1/4 mb-4 md:mb-0">
+<span class="font-mono-code text-[12px] text-primary min-w-[80px] uppercase block tracking-widest">// CLOUD &amp; DEVOPS</span>
+</div>
+<div class="md:w-3/4 flex flex-wrap gap-3">
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">MongoDB Atlas</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Cloudinary</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Firebase</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Docker</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Microsoft Azure AZ-900</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">CI/CD Concepts</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-start py-8 border-b border-border-subtle group">
+<div class="md:w-1/4 mb-4 md:mb-0">
+<span class="font-mono-code text-[12px] text-primary min-w-[80px] uppercase block tracking-widest">// LANGUAGES</span>
+</div>
+<div class="md:w-3/4 flex flex-wrap gap-3">
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">JavaScript</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Python</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Java</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">C++</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-start py-8 border-b border-border-subtle group">
+<div class="md:w-1/4 mb-4 md:mb-0">
+<span class="font-mono-code text-[12px] text-primary min-w-[80px] uppercase block tracking-widest">// TOOLS</span>
+</div>
+<div class="md:w-3/4 flex flex-wrap gap-3">
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Git</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">GitHub</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Postman</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">VS Code</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-start py-8 border-b border-border-subtle group">
+<div class="md:w-1/4 mb-4 md:mb-0">
+<span class="font-mono-code text-[12px] text-primary min-w-[80px] uppercase block tracking-widest">// CONCEPTS</span>
+</div>
+<div class="md:w-3/4 flex flex-wrap gap-3">
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">MVC Architecture</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">API Integration</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Containerization</span>
+<span class="px-4 py-2 rounded-full bg-tag-bg border border-tag-border text-[#C0C0D8] font-mono-code text-[13px] hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default">Database Design</span>
+</div>
+</div>
+</div>
+<!-- Certifications Sub-section -->
+<div class="mt-32">
+<span class="font-mono-code text-label-caps text-primary mb-12 block uppercase tracking-widest">// CERTIFICATIONS</span>
+<div class="overflow-x-auto hide-scrollbar -mx-6 px-6">
+<div class="flex gap-6 pb-8 min-w-max">
+<!-- Cert Card 1 -->
+<div class="w-[300px] bg-surface-card border border-border-subtle rounded-xl p-6 hover:border-primary transition-all duration-300 group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<h4 class="font-headline-md text-[18px] text-text-primary mb-2">Microsoft Azure Fundamentals AZ-900</h4>
+<p class="font-body-base text-[13px] text-on-surface-variant mb-4">Self-Study</p>
+<span class="font-mono-code text-[12px] text-primary">2026</span>
+</div>
+<!-- Cert Card 2 -->
+<div class="w-[300px] bg-surface-card border border-border-subtle rounded-xl p-6 hover:border-primary transition-all duration-300 group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<h4 class="font-headline-md text-[18px] text-text-primary mb-2">Docker &amp; DevOps Fundamentals</h4>
+<p class="font-body-base text-[13px] text-on-surface-variant mb-4">JavaScript Mastery</p>
+<span class="font-mono-code text-[12px] text-primary">2026</span>
+</div>
+<!-- Cert Card 3 -->
+<div class="w-[300px] bg-surface-card border border-border-subtle rounded-xl p-6 hover:border-primary transition-all duration-300 group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<h4 class="font-headline-md text-[18px] text-text-primary mb-2">Career Path Essentials</h4>
+<p class="font-body-base text-[13px] text-on-surface-variant mb-4">IESE Business School, Coursera</p>
+<span class="font-mono-code text-[12px] text-primary">2025</span>
+</div>
+<!-- Cert Card 4 -->
+<div class="w-[300px] bg-surface-card border border-border-subtle rounded-xl p-6 hover:border-primary transition-all duration-300 group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+</div>
+<h4 class="font-headline-md text-[18px] text-text-primary mb-2">Version Control / Git</h4>
+<p class="font-body-base text-[13px] text-on-surface-variant mb-4">Meta, Coursera</p>
+<span class="font-mono-code text-[12px] text-primary">2023</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 max-w-container-max mx-auto gap-grid-gutter">
+<span class="font-display-xl text-primary text-[24px]">MS</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant">© 2024 Muhammad Shahzaib. Engineered for Performance.</p>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">Email</a>
+</div>
+</div>
+</footer>
+<script>
+        const cursor = document.querySelector('.custom-cursor');
+        const ring = document.querySelector('.cursor-ring');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX - 5}px, ${e.clientY - 5}px)`;
+            ring.style.transform = `translate(${e.clientX - 12}px, ${e.clientY - 12}px)`;
+        });
+
+        document.querySelectorAll('a, button, .hover-trigger').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                ring.style.width = '48px';
+                ring.style.height = '48px';
+                ring.style.transform = `translate(${ring.offsetLeft - 12}px, ${ring.offsetTop - 12}px)`;
+                ring.style.background = 'rgba(0, 212, 255, 0.1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                ring.style.width = '24px';
+                ring.style.height = '24px';
+                ring.style.background = 'transparent';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MS | Full-Stack Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#003642",
+                    "secondary-fixed": "#e5deff",
+                    "surface-alternate": "#0D0D16",
+                    "surface-tint": "#3cd7ff",
+                    "tertiary-fixed": "#ffdeae",
+                    "primary-container": "#00d4ff",
+                    "on-tertiary-container": "#6c4900",
+                    "outline-variant": "#3c494e",
+                    "on-surface": "#e4e1e9",
+                    "surface-variant": "#35343a",
+                    "surface": "#131318",
+                    "on-tertiary": "#432c00",
+                    "on-secondary-fixed-variant": "#441cc8",
+                    "inverse-on-surface": "#303036",
+                    "tag-border": "#2A2A4A",
+                    "on-primary-container": "#00586b",
+                    "secondary": "#c9bfff",
+                    "outline": "#859398",
+                    "secondary-fixed-dim": "#c9bfff",
+                    "tag-bg": "#1A1A2E",
+                    "inverse-surface": "#e4e1e9",
+                    "nav-glass": "rgba(10, 10, 15, 0.85)",
+                    "surface-container-high": "#2a292f",
+                    "primary": "#a8e8ff",
+                    "surface-container": "#1f1f25",
+                    "surface-container-low": "#1b1b20",
+                    "surface-card": "#111118",
+                    "inverse-primary": "#00677e",
+                    "primary-fixed-dim": "#3cd7ff",
+                    "on-secondary-container": "#baaeff",
+                    "tertiary": "#ffd9a1",
+                    "on-secondary": "#2e009c",
+                    "on-tertiary-fixed": "#281900",
+                    "on-primary-fixed-variant": "#004e5f",
+                    "tertiary-container": "#feb528",
+                    "surface-bright": "#39383e",
+                    "on-error": "#690005",
+                    "text-primary": "#E8E8F0",
+                    "border-subtle": "#1E1E2E",
+                    "on-surface-variant": "#bbc9cf",
+                    "primary-fixed": "#b4ebff",
+                    "on-primary-fixed": "#001f27",
+                    "surface-dim": "#131318",
+                    "tertiary-fixed-dim": "#ffba3d",
+                    "surface-container-lowest": "#0e0e13",
+                    "surface-container-highest": "#35343a",
+                    "secondary-container": "#4720ca",
+                    "on-secondary-fixed": "#1a0063",
+                    "error-container": "#93000a",
+                    "background": "#0A0A0F",
+                    "on-background": "#e4e1e9",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#604100",
+                    "on-error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-padding": "32px",
+                    "section-gap-mobile": "64px",
+                    "section-gap": "120px",
+                    "grid-gutter": "24px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "display-xl-mobile": ["Space Grotesk"],
+                    "mono-code": ["JetBrains Mono"],
+                    "headline-md": ["Space Grotesk"],
+                    "display-xl": ["Space Grotesk"],
+                    "body-base": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "display-xl-mobile": ["42px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "mono-code": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-base": ["17px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "label-caps": ["13px", {"lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #0A0A0F;
+        color: #E8E8F0;
+        cursor: none;
+      }
+      .custom-cursor {
+        width: 10px;
+        height: 10px;
+        background-color: #00D4FF;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease;
+      }
+      .cursor-ring {
+        width: 34px;
+        height: 34px;
+        border: 1px solid #00D4FF;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+      }
+      .bento-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .bento-card:hover {
+        transform: translateY(-8px);
+        border-color: #00D4FF;
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
+      }
+      .mockup-img {
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      .bento-card:hover .mockup-img {
+        transform: scale(1.05) translateY(-5px);
+      }
+      .btn-primary-hover:hover::after {
+        width: 100%;
+      }
+      .btn-primary-hover::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: #00D4FF;
+        z-index: -1;
+        transition: width 0.3s ease;
+      }
+      .glass-nav {
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="font-body-base overflow-x-hidden">
+<div class="custom-cursor" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 glass-nav bg-nav-glass transition-all duration-300">
+<div class="flex justify-between items-center px-8 py-4 max-w-container-max mx-auto">
+<div class="font-display-xl text-headline-md font-bold text-primary">MS</div>
+<div class="hidden md:flex items-center gap-8 font-body-base text-body-base">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Skills</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Projects</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Experience</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Contact</a>
+<button class="bg-primary-container text-on-primary px-6 py-2 rounded-lg font-bold hover:opacity-80 transition-opacity">Resume</button>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-32 pb-section-gap max-w-container-max mx-auto px-6">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="text-left w-full md:w-auto">
+<p class="font-mono-code text-primary-container mb-2 tracking-widest">// SELECTED WORK</p>
+<h1 class="font-headline-lg text-headline-lg text-text-primary">Projects</h1>
+</div>
+<div class="flex flex-wrap gap-3 w-full md:w-auto justify-start md:justify-end">
+<button class="px-6 py-2 rounded-full bg-primary-container text-on-primary font-medium text-label-caps transition-all">All</button>
+<button class="px-6 py-2 rounded-full border border-primary-container text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-all">Full-Stack</button>
+<button class="px-6 py-2 rounded-full border border-primary-container text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-all">Cloud</button>
+<button class="px-6 py-2 rounded-full border border-primary-container text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-all">Backend</button>
+<button class="px-6 py-2 rounded-full border border-primary-container text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-all">Python</button>
+</div>
+</header>
+<!-- Projects Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter">
+<!-- FEATURED PROJECT 1 -->
+<div class="md:col-span-2 bento-card bg-surface-card border border-border-subtle rounded-[20px] p-8 md:p-10 flex flex-col md:flex-row gap-8 overflow-hidden group">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<span class="font-mono-code text-primary-container text-sm mb-4 block uppercase tracking-tight">Full-Stack · MERN · Cloud-Native</span>
+<h3 class="font-headline-md text-headline-md text-text-primary mb-4 leading-tight">Multimedia News Aggregator Tool</h3>
+<p class="text-on-surface-variant font-body-base leading-relaxed mb-6">
+                            High-performance dashboard aggregating real-time global news and video streams with intelligent search.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-tag-bg border border-tag-border rounded-md text-xs font-mono-code text-on-surface-variant">React</span>
+<span class="px-3 py-1 bg-tag-bg border border-tag-border rounded-md text-xs font-mono-code text-on-surface-variant">Node.js</span>
+<span class="px-3 py-1 bg-tag-bg border border-tag-border rounded-md text-xs font-mono-code text-on-surface-variant">Atlas</span>
+<span class="px-3 py-1 bg-tag-bg border border-tag-border rounded-md text-xs font-mono-code text-on-surface-variant">YouTube API</span>
+</div>
+</div>
+<div class="flex gap-4">
+<a class="flex items-center gap-2 text-on-surface hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">code</span>
+<span class="text-sm font-label-caps">View Code</span>
+</a>
+<a class="bg-primary-container text-on-primary px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:opacity-90 transition-opacity" href="#">
+                            View on Upwork <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+</div>
+</div>
+<div class="flex-1 relative mt-4 md:mt-0">
+<div class="w-full h-full bg-surface-alternate rounded-xl border border-border-subtle overflow-hidden mockup-img">
+<div class="flex gap-1.5 p-3 border-b border-border-subtle bg-surface-container-low">
+<div class="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
+</div>
+<img alt="Digital News Dashboard Interface" class="w-full h-auto object-cover opacity-80" data-alt="A sophisticated dark-themed user interface for a news aggregator dashboard. The screen features a grid of news cards with high-contrast typography, live streaming video components in sidebar areas, and a sleek navigation bar. The lighting is dominated by glowing electric cyan highlights and subtle deep purple glows against a charcoal black background. The overall aesthetic is clean, technical, and data-driven." src="https://lh3.googleusercontent.com/aida/AP1WRLvGfux1TLX3nWp54pzskUf1hA-r9dWcjtYbs5mn4NSxrmP-J07O3lDODshx2NF92ncLPnzZc_ltQ_-dmY8iPF297Uu2Mv02QS1kYp7FUjPtovpjdkiCHKn3-7Ep42Pq6aISguFkI4OTXfAm-Pmj4_ndeAZzXGVC5ZWj48KSlv214mE9HNynE8nZBKy3vuIJSPBEj7bW5rvrWFv0imQLnS4g7QMLbFLnfk8lXipB0Ge9t909PoXfx54_JH5A"/>
+</div>
+</div>
+</div>
+<!-- REGULAR PROJECT: ExtraJobs -->
+<div class="bento-card bg-surface-card border border-border-subtle rounded-2xl p-8 flex flex-col justify-between group">
+<div>
+<span class="font-mono-code text-primary-container text-[12px] mb-3 block uppercase">Cloud-Native</span>
+<h3 class="font-headline-md text-[22px] text-text-primary mb-3">ExtraJobs Marketplace MVP</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Freelance marketplace connecting specialized talent with high-impact projects.</p>
+</div>
+<div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">Next.js</span>
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">Firebase</span>
+</div>
+<a class="inline-flex items-center text-primary text-sm font-bold group-hover:underline" href="#">
+                        Explore Case Study <span class="material-symbols-outlined ml-1 text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- REGULAR PROJECT: OzoneSync -->
+<div class="bento-card bg-surface-card border border-border-subtle rounded-2xl p-8 flex flex-col justify-between group">
+<div>
+<span class="font-mono-code text-primary-container text-[12px] mb-3 block uppercase">Full-Stack</span>
+<h3 class="font-headline-md text-[22px] text-text-primary mb-3">OzoneSync Website</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Highly interactive corporate portal with real-time asset tracking visualizations.</p>
+</div>
+<div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">Three.js</span>
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">PostgreSQL</span>
+</div>
+<a class="inline-flex items-center text-primary text-sm font-bold group-hover:underline" href="#">
+                        View Demo <span class="material-symbols-outlined ml-1 text-[16px]">visibility</span>
+</a>
+</div>
+</div>
+<!-- FEATURED PROJECT 2 -->
+<div class="md:col-span-2 bento-card bg-surface-card border border-border-subtle rounded-[20px] p-8 md:p-10 flex flex-col md:flex-row-reverse gap-8 overflow-hidden group">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<span class="font-mono-code text-primary-container text-sm mb-4 block uppercase tracking-tight">Full-Stack · MERN · Complex Architecture</span>
+<h3 class="font-headline-md text-headline-md text-text-primary mb-4 leading-tight">Dose Dash: Delivery Platform</h3>
+<p class="text-on-surface-variant font-body-base leading-relaxed mb-6">
+                            A complex prescription-to-delivery system connecting customers, pharmacies, and riders in a unified real-time ecosystem.
+                        </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-tag-bg border border-tag-border rounded-md text-xs font-mono-code text-on-surface-variant">Socket.io</span>
+<span class="px-3 py-1 bg-tag-bg border border-tag-border rounded-md text-xs font-mono-code text-on-surface-variant">Redux</span>
+<span class="px-3 py-1 bg-tag-bg border border-tag-border rounded-md text-xs font-mono-code text-on-surface-variant">Express</span>
+<span class="px-3 py-1 bg-tag-bg border border-tag-border rounded-md text-xs font-mono-code text-on-surface-variant">JWT</span>
+</div>
+</div>
+<div class="flex gap-4">
+<a class="bg-primary-container text-on-primary px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:opacity-90 transition-opacity" href="#">
+                            View Project <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+</a>
+</div>
+</div>
+<div class="flex-1 relative mt-4 md:mt-0">
+<div class="w-full h-full bg-surface-alternate rounded-xl border border-border-subtle overflow-hidden mockup-img">
+<div class="flex gap-1.5 p-3 border-b border-border-subtle bg-surface-container-low">
+<div class="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
+</div>
+<img alt="Complex Multi-User Platform Mockup" class="w-full h-auto object-cover opacity-80" data-alt="A clean, minimalist software dashboard mockup showcasing multiple user roles and analytics. The screen includes real-time location tracking maps, status indicators with soft neon glows, and a professional sidebar navigation. The lighting is moody and technological, with vibrant cyan accent lines defining the hierarchy against deep indigo-black surfaces. The aesthetic conveys precision engineering and high-end enterprise software design." src="https://lh3.googleusercontent.com/aida/AP1WRLs0uoqjxHX13OxBB8hMxacEgWflYcg2JR5BMyu2zz9-hWCzBfd-8QrI0Y4lKJzsuArGHEe5NtL5SBi9xCslzDiQEJxAkfAA1tt8tAznol5lSLQ4fvQeVugFQ7w5yepe90IXDq4JY5xlmQblKTT3yxdRuvKwA40bPailFGFwZIPwe8rKcA6juD9ktpnwJRupaiUluGnMbh-3sTitg-YutnmloomFMAf6wQqN0sZCbmUkWW7kfo0CmytfxLIr"/>
+</div>
+</div>
+</div>
+<!-- REGULAR PROJECT: Gamified EdTech -->
+<div class="bento-card bg-surface-card border border-border-subtle rounded-2xl p-8 flex flex-col justify-between group">
+<div>
+<span class="font-mono-code text-primary-container text-[12px] mb-3 block uppercase">Full-Stack · Gaming</span>
+<h3 class="font-headline-md text-[22px] text-text-primary mb-3">Gamified EdTech Hub</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Interactive "Math Tug of War" and "Verb Battle" platforms for active learning.</p>
+</div>
+<div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">React</span>
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">Canvas API</span>
+</div>
+<a class="inline-flex items-center text-primary text-sm font-bold group-hover:underline" href="#">
+                        Play Demo <span class="material-symbols-outlined ml-1 text-[16px]">sports_esports</span>
+</a>
+</div>
+</div>
+<!-- REGULAR PROJECT: Task Manager -->
+<div class="bento-card bg-surface-card border border-border-subtle rounded-2xl p-8 flex flex-col justify-between group">
+<div>
+<span class="font-mono-code text-primary-container text-[12px] mb-3 block uppercase">Backend Focus</span>
+<h3 class="font-headline-md text-[22px] text-text-primary mb-3">Distributed Task Manager</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Robust task scheduling system with Redis-backed queueing and worker nodes.</p>
+</div>
+<div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">Redis</span>
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">BullMQ</span>
+</div>
+<a class="inline-flex items-center text-primary text-sm font-bold group-hover:underline" href="#">
+                        API Docs <span class="material-symbols-outlined ml-1 text-[16px]">description</span>
+</a>
+</div>
+</div>
+<!-- REGULAR PROJECT: Dawn Scraper -->
+<div class="bento-card bg-surface-card border border-border-subtle rounded-2xl p-8 flex flex-col justify-between group">
+<div>
+<span class="font-mono-code text-primary-container text-[12px] mb-3 block uppercase">Python · Automation</span>
+<h3 class="font-headline-md text-[22px] text-text-primary mb-3">Dawn News Intelligence</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Automated scraper and sentiment analyzer for archival news processing.</p>
+</div>
+<div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">Python</span>
+<span class="px-2 py-0.5 bg-tag-bg border border-tag-border rounded text-[11px] font-mono-code">Selenium</span>
+</div>
+<a class="inline-flex items-center text-primary text-sm font-bold group-hover:underline" href="#">
+                        GitHub Repo <span class="material-symbols-outlined ml-1 text-[16px]">terminal</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Timeline / Experience Teaser -->
+<div class="mt-section-gap border-t border-border-subtle pt-section-gap-mobile flex flex-col md:flex-row gap-12 items-center">
+<div class="flex-1">
+<h2 class="font-headline-lg text-headline-lg text-text-primary mb-6">Engineering Experience</h2>
+<div class="space-y-8">
+<div class="flex gap-6 relative">
+<div class="w-0.5 h-full bg-border-subtle absolute left-[7px] top-2"></div>
+<div class="w-4 h-4 rounded-full bg-primary-container shrink-0 z-10 mt-1 shadow-[0_0_10px_#00D4FF]"></div>
+<div>
+<h4 class="font-headline-md text-xl text-text-primary">Lead Full-Stack Developer</h4>
+<p class="text-primary-container font-mono-code text-sm">TechFlow Solutions • 2022 — Present</p>
+</div>
+</div>
+<div class="flex gap-6 relative">
+<div class="w-0.5 h-full bg-border-subtle absolute left-[7px] top-2"></div>
+<div class="w-4 h-4 rounded-full bg-border-subtle shrink-0 z-10 mt-1 border-2 border-primary-container"></div>
+<div>
+<h4 class="font-headline-md text-xl text-text-primary">MERN Stack Engineer</h4>
+<p class="text-on-surface-variant font-mono-code text-sm">InnovateLab • 2020 — 2022</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-surface-alternate p-12 rounded-3xl border border-border-subtle text-center relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-container/5 rounded-full blur-3xl"></div>
+<h3 class="font-headline-md text-2xl text-text-primary mb-4">Have a complex project?</h3>
+<p class="text-on-surface-variant mb-8">I specialize in building production-grade full-stack architectures that scale from day one.</p>
+<a class="inline-block bg-primary-container text-on-primary px-10 py-4 rounded-lg font-bold text-lg hover:shadow-[0_0_20px_rgba(0,212,255,0.4)] transition-all" href="#">Start a Conversation</a>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface py-16 border-t border-border-subtle">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-container-max mx-auto gap-8">
+<div class="font-display-xl text-headline-md font-bold text-primary">MS</div>
+<p class="text-on-surface-variant font-body-base">© 2024 MS. Built with precision.</p>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Email</a>
+</div>
+</div>
+</footer>
+<script>
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let dotX = 0;
+        let dotY = 0;
+        let ringX = 0;
+        let ringY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animate() {
+            // Smooth dot follow
+            dotX += (mouseX - dotX) * 0.2;
+            dotY += (mouseY - dotY) * 0.2;
+            dot.style.transform = `translate(${dotX - 5}px, ${dotY - 5}px)`;
+
+            // Slower ring follow
+            ringX += (mouseX - ringX) * 0.1;
+            ringY += (mouseY - ringY) * 0.1;
+            ring.style.transform = `translate(${ringX - 17}px, ${ringY - 17}px)`;
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Hover effect for interactive elements
+        const interactives = document.querySelectorAll('a, button, .bento-card');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                ring.style.width = '50px';
+                ring.style.height = '50px';
+                ring.style.borderColor = '#7B61FF';
+                ring.style.transform = `translate(${ringX - 25}px, ${ringY - 25}px)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                ring.style.width = '34px';
+                ring.style.height = '34px';
+                ring.style.borderColor = '#00D4FF';
+            });
+        });
+
+        // Sticky Navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2', 'shadow-xl');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2', 'shadow-xl');
+            }
+        });
+    </script>
+</body></html>
