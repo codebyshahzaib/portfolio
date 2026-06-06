@@ -4,38 +4,82 @@ import { useEffect, useRef } from "react";
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const pacmanRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef({ x: 0, y: 0 });
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const eatTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const dot = dotRef.current;
-    const ring = ringRef.current;
-    if (!dot || !ring) return;
+    const wrapper = wrapperRef.current;
+    const pacman = pacmanRef.current;
+    if (!dot || !wrapper || !pacman) return;
+
+    // Set initial positions offscreen
+    dot.style.left = '-20px';
+    dot.style.top = '-20px';
+    wrapper.style.left = '-20px';
+    wrapper.style.top = '-20px';
 
     const onMouseMove = (e: MouseEvent) => {
+      // Move the dot instantly
       dot.style.left = e.clientX + 'px';
       dot.style.top = e.clientY + 'px';
       
+      const dx = e.clientX - posRef.current.x;
+      const dy = e.clientY - posRef.current.y;
+      
+      // Update rotation if there is significant movement
+      if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+        pacman.style.transform = `rotate(${angle}deg)`;
+      }
+
+      posRef.current = { x: e.clientX, y: e.clientY };
+
+      // Pac-Man follows with an increased delay for more distance
       setTimeout(() => {
-        ring.style.left = (e.clientX - 17) + 'px';
-        ring.style.top = (e.clientY - 17) + 'px';
-      }, 50);
+        wrapper.style.left = e.clientX + 'px';
+        wrapper.style.top = e.clientY + 'px';
+      }, 150);
+
+      // Restore dot and keep mouth open while moving
+      dot.style.opacity = '1';
+      pacman.classList.remove('eat');
+
+      // Clear existing timers
+      if (eatTimeoutRef.current) clearTimeout(eatTimeoutRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+      // Trigger eating animation when mouse stops
+      timeoutRef.current = setTimeout(() => {
+        pacman.classList.add('eat');
+        
+        // Hide the dot exactly when the mouth closes (halfway through the 300ms animation)
+        eatTimeoutRef.current = setTimeout(() => {
+          dot.style.opacity = '0';
+        }, 150);
+      }, 150);
     };
 
     const onMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest('a, button, input, select, textarea, .bento-card, .glow-hover')) {
-        ring.style.transform = 'scale(1.8)';
-        ring.style.borderColor = 'var(--color-primary)';
-        ring.style.backgroundColor = 'rgba(0, 212, 255, 0.05)';
+      if (target.closest('a, button, input, select, textarea, .bento-card, .glow-hover, .group\\/btn, [role="button"]')) {
+        wrapper.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        pacman.style.setProperty('--pacman-color', 'var(--color-primary)');
+        dot.style.backgroundColor = 'var(--color-primary)';
+        dot.style.boxShadow = '0 0 8px var(--color-primary)';
       }
     };
 
     const onMouseOut = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest('a, button, input, select, textarea, .bento-card, .glow-hover')) {
-        ring.style.transform = 'scale(1)';
-        ring.style.borderColor = 'var(--color-primary)';
-        ring.style.backgroundColor = 'transparent';
+      if (target.closest('a, button, input, select, textarea, .bento-card, .glow-hover, .group\\/btn, [role="button"]')) {
+        wrapper.style.transform = 'translate(-50%, -50%) scale(1)';
+        pacman.style.setProperty('--pacman-color', '#FFBD2E');
+        dot.style.backgroundColor = '#FFBD2E';
+        dot.style.boxShadow = 'none';
       }
     };
 
@@ -52,15 +96,56 @@ export default function CustomCursor() {
 
   return (
     <>
+      <style>{`
+        :root {
+          --pacman-color: #FFBD2E;
+        }
+        @keyframes single-chomp {
+          0% { border-right-color: transparent; }
+          50% { border-right-color: var(--pacman-color); }
+          100% { border-right-color: transparent; }
+        }
+        .pacman-cursor {
+          width: 0;
+          height: 0;
+          border-width: 16px;
+          border-style: solid;
+          border-color: var(--pacman-color) transparent var(--pacman-color) var(--pacman-color);
+          border-radius: 50%;
+          transition: border-color 0.2s ease-out;
+          position: relative;
+        }
+        .pacman-cursor.eat {
+          animation: single-chomp 0.3s forwards;
+        }
+        /* Pac-Man Eye */
+        .pacman-cursor::after {
+          content: '';
+          position: absolute;
+          width: 5px;
+          height: 5px;
+          background-color: #0A0A0F; /* Dark color to act as an eye */
+          border-radius: 50%;
+          top: -10px;
+          left: -2px;
+        }
+      `}</style>
+      
+      {/* The Pac-Dot (Actual Cursor) */}
       <div
         ref={dotRef}
-        className="w-[10px] h-[10px] bg-primary rounded-full fixed pointer-events-none z-[9999] transition-transform duration-100 ease-out hidden md:block"
-        style={{ transform: 'translate(-50%, -50%)' }}
+        className="w-[6px] h-[6px] bg-[#FFBD2E] rounded-full fixed pointer-events-none z-[9999] transition-[background-color,box-shadow] duration-200 hidden md:block"
+        style={{ transform: 'translate(-50%, -50%)', opacity: 1 }}
       ></div>
+      
+      {/* The Pac-Man (Follower) */}
       <div
-        ref={ringRef}
-        className="w-[34px] h-[34px] border border-primary rounded-full fixed pointer-events-none z-[9998] transition-all duration-150 ease-out hidden md:block"
-      ></div>
+        ref={wrapperRef}
+        className="fixed pointer-events-none z-[9998] transition-transform duration-200 ease-out hidden md:block"
+        style={{ transform: 'translate(-50%, -50%) scale(1)' }}
+      >
+        <div ref={pacmanRef} className="pacman-cursor"></div>
+      </div>
     </>
   );
 }
