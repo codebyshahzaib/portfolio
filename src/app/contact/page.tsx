@@ -174,16 +174,18 @@ export default function ContactPage() {
                       rows={5}
                     ></textarea>
                   </div>
-                  <button
-                    className="w-full bg-primary-container text-on-primary-fixed font-headline-md font-bold py-4 rounded-lg hover:bg-[#3cd7ff] hover:shadow-[0_0_25px_rgba(0,212,255,0.3)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2 group"
-                    type="button"
-                    onClick={() => alert("Message feature to be implemented")}
-                  >
-                    <span>Send Message</span>
-                    <span className="material-symbols-outlined text-on-primary-fixed group-hover:translate-x-1 transition-transform">
-                      arrow_forward
-                    </span>
-                  </button>
+                  <div className="btn-octagon-wrapper w-full bg-primary-container drop-shadow-[0_0_15px_rgba(0,212,255,0.3)] hover:drop-shadow-[0_0_25px_rgba(0,212,255,0.5)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group">
+                    <button
+                      className="btn-octagon-inner w-full bg-primary-container text-on-primary-fixed font-headline-md font-bold py-4 hover:bg-[#3cd7ff] transition-all duration-300 flex items-center justify-center space-x-2"
+                      type="button"
+                      onClick={() => alert("Message feature to be implemented")}
+                    >
+                      <span>Send Message</span>
+                      <span className="material-symbols-outlined text-on-primary-fixed group-hover:translate-x-1 transition-transform">
+                        arrow_forward
+                      </span>
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -196,8 +198,8 @@ export default function ContactPage() {
         <div className="absolute inset-0 grayscale contrast-125 opacity-50">
           <img
             className="w-full h-full object-cover"
-            alt="A stylized high-contrast satellite view of an urban metropolitan grid at night."
-            src="https://lh3.googleusercontent.com/aida/AP1WRLtpQR5jPLqRasQDG_Q48arjqEjJPBgTa5isMxITDFJub5lw6RmgMebywkmAyFySvxD2YIuDwYWn8Myom97pSlcx-oZcWk1iWxm7EtFUnafT27WU0_yuUg0KELq4c25aDADsz_l4fBD1X7tK7nyVkh7H0jUOVz7x7Qm3VQuy2VOg2jM36kLv8n88Xi8r7TvhREcoJL2DOoD7HyeBbWNY_O0Epex2jrD3JEP3YwKpKljQ-sr2q2o1m0EFQzmY"
+            alt="A stylized high-contrast satellite view of Lahore at night."
+            src="/lahore_map.png"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
@@ -207,7 +209,7 @@ export default function ContactPage() {
               <span className="material-symbols-outlined text-primary-container" style={{ fontVariationSettings: "'FILL' 1" }}>
                 location_on
               </span>
-              <span className="font-mono-code text-text-primary tracking-wide">BASED IN KARACHI, PK</span>
+              <span className="font-mono-code text-text-primary tracking-wide">BASED IN LAHORE, PK</span>
             </div>
           </div>
         </div>

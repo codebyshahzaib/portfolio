@@ -35,11 +35,10 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-20 items-center">
           <div className="relative">
             <div className="aspect-square bg-surface-alternate border border-border-subtle relative overflow-hidden group">
-              {/* Note: Using img tag instead of Next/Image because the external source needs to be configured in next.config.ts if we use next/image. For simplicity we use img for remote URL unless requested to download. */}
               <img 
-                alt="Professional portrait of engineer" 
+                alt="Portrait of Muhammad Shahzaib" 
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
-                src="https://lh3.googleusercontent.com/aida/AP1WRLsOnykdee7IEGNBWspbPN96qiTU4St5UsSbrGDaZUQR5giR2N80ygzC3PH-p7mEWnsPo-RpQrq1DDa8Sga7z0josu5tcDlNTZ-dukZGGpgwbIeevsET9Vzw_74hQVMA3A1PSvYKaJcZW4OWbHmwx2biWH-bbyeb_dP1fM4HzEBfU1PxJDrkVNdLiJl6vJ2CkxfAcAvL6c1k4dY-b8hZGRzflCF9WZxOMXJ-qMEauI32bJEQfRY5X6LOVHQ" 
+                src="/shahzaibpic.png" 
               />
               <div className="absolute inset-0 border-[20px] border-background"></div>
               <div className="absolute -bottom-4 -right-4 w-40 h-40 border-r-2 border-b-2 border-primary"></div>
@@ -249,10 +248,12 @@ export default function Home() {
               <label className="text-label-caps text-on-surface-variant uppercase text-[11px]">Message</label>
               <textarea className="w-full bg-[#05050A] border border-border-subtle focus:border-primary focus:ring-0 text-on-surface font-mono-code p-3 transition-colors outline-none resize-none" placeholder="How can I help you?" rows={4}></textarea>
             </div>
-            <button className="w-full py-4 bg-primary text-on-primary font-bold hover:shadow-[0_0_20px_rgba(0,212,255,0.2)] transition-all flex items-center justify-center gap-2" type="button">
-              SEND TRANSMISSION
-              <span className="material-symbols-outlined text-sm">send</span>
-            </button>
+            <div className="btn-octagon-wrapper w-full bg-primary drop-shadow-[0_0_15px_rgba(0,212,255,0.3)] hover:drop-shadow-[0_0_25px_rgba(0,212,255,0.5)] transition-all">
+              <button className="btn-octagon-inner w-full py-4 bg-primary text-on-primary font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2" type="button">
+                SEND TRANSMISSION
+                <span className="material-symbols-outlined text-sm">send</span>
+              </button>
+            </div>
           </form>
         </div>
       </section>

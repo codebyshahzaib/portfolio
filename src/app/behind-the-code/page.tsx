@@ -222,16 +222,20 @@ export default function BehindTheCode() {
             Ready to see it in action?
           </h3>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button className="px-10 py-4 bg-primary text-on-primary font-bold rounded-lg hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all transform hover:-translate-y-1">
-              View Live Project
-            </button>
-            <Link
-              href="/"
-              className="px-10 py-4 border border-primary text-primary font-bold rounded-lg hover:bg-primary/10 transition-all flex items-center justify-center gap-2"
-            >
-              <span className="material-symbols-outlined">arrow_back</span>
-              Back to Portfolio
-            </Link>
+            <div className="btn-octagon-wrapper bg-primary drop-shadow-[0_0_15px_rgba(0,212,255,0.3)] hover:drop-shadow-[0_0_25px_rgba(0,212,255,0.5)] transition-all transform hover:-translate-y-1">
+              <button className="btn-octagon-inner px-10 py-4 bg-primary text-on-primary font-bold hover:bg-primary/90 transition-all w-full h-full">
+                View Live Project
+              </button>
+            </div>
+            <div className="group btn-octagon-wrapper bg-primary/40 hover:bg-primary drop-shadow-[0_0_5px_rgba(0,212,255,0.2)] hover:drop-shadow-[0_0_15px_rgba(0,212,255,0.4)] transition-all transform hover:-translate-y-1">
+              <Link
+                href="/"
+                className="btn-octagon-inner px-10 py-4 bg-[#0A0A0F] text-primary font-bold group-hover:bg-primary group-hover:text-on-primary transition-all flex items-center justify-center gap-2 w-full h-full"
+              >
+                <span className="material-symbols-outlined">arrow_back</span>
+                Back to Portfolio
+              </Link>
+            </div>
           </div>
         </div>
       </RevealSection>

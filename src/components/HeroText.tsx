@@ -53,14 +53,18 @@ export default function HeroText() {
         I build production-grade web applications with the MERN stack — from responsive UIs to scalable backends and cloud-integrated services.
       </p>
 
-      <div className="flex flex-wrap gap-4 mb-8">
-        <Link href="#projects" className="bg-primary-container text-on-primary-container font-bold px-6 py-3 flex items-center gap-3 glow-hover transition-all duration-300 text-sm">
-          View My Work
-          <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-        </Link>
-        <Link href="#contact" className="border border-primary-container text-primary-container font-bold px-6 py-3 hover:bg-primary-container/10 transition-all duration-300 text-sm">
-          Get In Touch
-        </Link>
+      <div className="flex flex-col sm:flex-row gap-5 mb-10">
+        <div className="group btn-octagon-wrapper w-full sm:w-[200px] bg-primary-container drop-shadow-[0_0_10px_rgba(0,212,255,0.4)] hover:drop-shadow-[0_0_20px_rgba(0,212,255,0.6)] transition-all pacman-white">
+          <Link href="#projects" className="btn-octagon-inner w-full h-full bg-primary-container text-on-primary-container font-bold flex justify-center items-center gap-2 py-4 transition-all duration-300 text-sm group-hover:bg-[#3cd7ff]">
+            View My Work
+            <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </Link>
+        </div>
+        <div className="group btn-octagon-wrapper w-full sm:w-[200px] bg-primary-container/40 hover:bg-primary-container drop-shadow-[0_0_5px_rgba(0,212,255,0.2)] hover:drop-shadow-[0_0_15px_rgba(0,212,255,0.4)] transition-all pacman-white">
+          <Link href="#contact" className="btn-octagon-inner w-full h-full bg-[#0A0A0F] text-primary-container font-bold flex justify-center items-center gap-2 py-4 group-hover:bg-primary-container group-hover:text-on-primary-container transition-all duration-300 text-sm tracking-wide">
+            Get In Touch
+          </Link>
+        </div>
       </div>
 
       <div className="flex items-center gap-6 border-t border-border-subtle pt-6">

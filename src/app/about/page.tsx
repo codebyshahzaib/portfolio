@@ -16,11 +16,11 @@ export default function AboutPage() {
             <div className="absolute inset-0 border-2 border-dashed border-[#00D4FF]/40 rounded-[20px] translate-x-4 translate-y-4 -z-10"></div>
             {/* Main Photo Container */}
             <div className="relative w-full aspect-[4/4.8] max-w-[400px] rotate-2 glow-cyan rounded-[20px] overflow-hidden bg-surface-container transition-transform duration-500 group-hover:rotate-0 group-hover:scale-[1.02]">
-              {/* Note: Using img tag instead of Next/Image for external URLs to avoid requiring next.config.js domains setup */}
+              {/* Profile Image */}
               <img
                 alt="Muhammad Shahzaib"
                 className="w-full h-full object-cover"
-                src="https://lh3.googleusercontent.com/aida/AP1WRLsAikJaOsU1cnwqHZPSu1KiRW3uN-2mtMtahrKgpxtQzMiFiu0NVqKxPZVvaR2IDA2--Ehq8RgRDorHXXH8tCoVu5AfEeQTSmywO-UfX-fYZb5JbkRjsbIn2uYnv0F9Bpkg24hXMMdje23ziyMS_9ehOL5MIQaZxbeHSvJkRshrfAYQn20PoJKJ05023rCQGAC8mFobwXAU1dNicwpdP1SP9OkIT_H64pgEJNdIFG7JFBO00a7lF8yHFV9h"
+                src="/shahzaib.jpg"
               />
               {/* Overlay gradient for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>

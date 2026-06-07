@@ -67,9 +67,12 @@ export default function CustomCursor() {
       const target = e.target as HTMLElement;
       if (target.closest('a, button, input, select, textarea, .bento-card, .glow-hover, .group\\/btn, [role="button"]')) {
         wrapper.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        pacman.style.setProperty('--pacman-color', 'var(--color-primary)');
-        dot.style.backgroundColor = 'var(--color-primary)';
-        dot.style.boxShadow = '0 0 8px var(--color-primary)';
+        
+        if (target.closest('.pacman-white')) {
+          pacman.style.setProperty('--pacman-color', 'white');
+          dot.style.backgroundColor = 'white';
+          dot.style.boxShadow = '0 0 8px white';
+        }
       }
     };
 

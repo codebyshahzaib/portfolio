@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useGameAudio } from "@/hooks/useGameAudio";
 
 export default function ReactivePathfinding() {
   const [grid, setGrid] = useState<number[]>(Array(100).fill(0));
@@ -9,9 +10,10 @@ export default function ReactivePathfinding() {
   const [isCalculating, setIsCalculating] = useState(false);
   
   // Tooltip states
-  const [showTooltip, setShowTooltip] = useState(true);
-  const [hoverTriggered, setHoverTriggered] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [hasHovered, setHasHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { isMuted, toggleMute, playClick, playHover, playSuccess, playError, speak } = useGameAudio();
 
   const botIdx = 11;
   const goalIdx = 88;
@@ -20,23 +22,28 @@ export default function ReactivePathfinding() {
 
   useEffect(() => {
     const handleMouseEnter = () => {
-      if (!hoverTriggered) {
-        setHoverTriggered(true);
-        // Hide tooltip 4 seconds after the first hover
-        setTimeout(() => {
-          setShowTooltip(false);
-        }, 4000);
+      if (!hasHovered) {
+        setHasHovered(true);
+        setShowTooltip(true);
       }
     };
 
     const el = containerRef.current;
-    if (el) {
-      el.addEventListener("mouseenter", handleMouseEnter);
-    }
+    if (el) el.addEventListener("mouseenter", handleMouseEnter);
     return () => {
       if (el) el.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [hoverTriggered]);
+  }, [hasHovered]);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (showTooltip) {
+      timeout = setTimeout(() => {
+        setShowTooltip(false);
+      }, 5000);
+    }
+    return () => clearTimeout(timeout);
+  }, [showTooltip]);
 
   const toggleObstacle = (idx: number) => {
     if (isCalculating || idx === botIdx || idx === goalIdx) return;
@@ -44,12 +51,15 @@ export default function ReactivePathfinding() {
     newGrid[idx] = newGrid[idx] === 0 ? 1 : 0;
     setGrid(newGrid);
     setPath([]); // Reset path on new obstacle
+    playClick();
   };
 
   const resetGrid = () => {
     if (isCalculating) return;
     setGrid(Array(100).fill(0));
     setPath([]);
+    playClick();
+    speak("Grid cleared. Awaiting obstacles.");
   };
 
   const runPathfinding = () => {
@@ -57,6 +67,7 @@ export default function ReactivePathfinding() {
     setIsCalculating(true);
     setPath([]);
     setShowTooltip(false); // Hide tooltip if they press play early
+    speak("Bot logic engaged. Processing path.");
 
     // Breadth-First Search Implementation
     const queue: number[] = [botIdx];
@@ -111,6 +122,7 @@ export default function ReactivePathfinding() {
           setPath(prev => {
             // Prevent duplicate indices just in case
             if (!prev.includes(currentCell)) {
+              playHover(); // Play a scanning sound per step
               return [...prev, currentCell];
             }
             return prev;
@@ -119,10 +131,14 @@ export default function ReactivePathfinding() {
         } else {
           clearInterval(interval);
           setIsCalculating(false);
+          playSuccess();
+          speak("Destination reached. Efficiency optimal.");
         }
       }, 50);
     } else {
       // Flash grid red to indicate blocked
+      playError();
+      speak("Error. Target is unreachable. Please remove obstacles.");
       const originalGrid = [...grid];
       const errorGrid = grid.map((c) => c === 1 ? 2 : c); // 2 represents error wall
       setGrid(errorGrid);
@@ -136,20 +152,36 @@ export default function ReactivePathfinding() {
   return (
     <div 
       ref={containerRef}
-      className="w-full max-w-sm mx-auto bg-surface border border-border-subtle rounded-[20px] p-5 shadow-2xl relative group hover:border-primary-container/50 transition-colors duration-500 overflow-hidden"
+      className="w-full max-w-sm mx-auto card-octagon-wrapper bg-primary-container/60 hover:bg-primary-container shadow-[0_0_20px_rgba(0,212,255,0.2)] hover:shadow-[0_0_35px_rgba(0,212,255,0.4)] relative group transition-all duration-500 select-none"
     >
+      <div className="card-octagon-inner bg-surface p-5 relative overflow-hidden">
       {/* Decorative Top Line */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-container/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-      {/* Initial Hover Tooltip Overlay */}
+      {/* Tooltip Overlay */}
       {showTooltip && (
-        <div className="absolute inset-0 z-50 bg-surface/80 backdrop-blur-sm flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-          <div className="bg-surface-card border border-primary-container/30 p-5 rounded-lg shadow-[0_0_30px_rgba(0,212,255,0.15)] text-center animate-in zoom-in-95 duration-500">
-            <span className="material-symbols-outlined text-primary-container text-4xl mb-3">touch_app</span>
-            <h4 className="font-headline-md text-primary-container text-base mb-2">Interactive Engine</h4>
-            <p className="text-sm text-on-surface-variant font-body-base leading-relaxed">
-              Click cells to build walls. Press <strong className="text-on-surface">Play</strong> to watch the AI navigate around them.
-            </p>
+        <div className="absolute inset-0 z-[100] bg-surface/80 backdrop-blur-sm flex items-center justify-center p-6 animate-in fade-in duration-300">
+          <div className="card-octagon-wrapper bg-primary-container/30 w-full max-w-[240px] drop-shadow-[0_0_30px_rgba(0,212,255,0.15)] animate-in zoom-in-95 duration-300">
+            <div className="card-octagon-inner bg-surface-card p-5 text-center relative w-full h-full">
+              <span className="material-symbols-outlined text-primary-container text-4xl mb-3">touch_app</span>
+              <h4 className="font-headline-md text-primary-container text-base mb-2">Interactive Engine</h4>
+              <p className="text-sm text-on-surface-variant font-body-base leading-relaxed mb-4">
+                Click cells to build walls. Press <strong className="text-on-surface">Play</strong> to watch the AI navigate around them.
+              </p>
+              <div className="btn-octagon-wrapper bg-primary-container/30 w-full hover:bg-primary-container/60 transition-colors mt-2">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowTooltip(false);
+                    playClick();
+                    speak("System online. Awaiting wall placement.");
+                  }}
+                  className="btn-octagon-inner w-full py-2 bg-[#0A0A0F] text-primary-container hover:bg-primary-container/10 text-[10px] font-mono-code uppercase tracking-widest transition-colors"
+                >
+                  Start Building
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -201,6 +233,25 @@ export default function ReactivePathfinding() {
 
           {/* Info Buttons */}
           <div className="flex gap-2">
+            {/* Audio Toggle Button */}
+            <div className="relative group/btn">
+              <button 
+                onClick={toggleMute}
+                className={`w-8 h-8 rounded border flex items-center justify-center transition-all ${
+                  isMuted 
+                    ? "border-surface-variant bg-surface-card text-on-surface-variant hover:bg-surface-variant hover:text-on-surface" 
+                    : "border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary hover:shadow-[0_0_12px_rgba(0,212,255,0.3)]"
+                }`}
+              >
+                <span className="material-symbols-outlined text-[16px]">
+                  {isMuted ? "volume_off" : "volume_up"}
+                </span>
+              </button>
+              <div className="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-surface-card border border-border-subtle text-[9px] font-mono-code text-on-surface px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity pointer-events-none z-50 shadow-lg">
+                {isMuted ? "Unmute Audio" : "Mute Audio"}
+              </div>
+            </div>
+
             {/* Hint Button */}
             <div className="relative group/btn">
               <button 
@@ -285,6 +336,7 @@ export default function ReactivePathfinding() {
             <span>Goal</span>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

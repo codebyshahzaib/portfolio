@@ -17,21 +17,31 @@ export default function ProjectsPage() {
           <h1 className="font-headline-lg text-headline-lg text-text-primary">Projects</h1>
         </div>
         <div className="flex flex-wrap gap-3 w-full md:w-auto justify-start md:justify-end">
-          <button className="px-6 py-2 rounded-full bg-primary-container text-on-primary font-medium text-label-caps transition-all">
-            All
-          </button>
-          <button className="px-6 py-2 rounded-full border border-primary-container text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-all">
-            Full-Stack
-          </button>
-          <button className="px-6 py-2 rounded-full border border-primary-container text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-all">
-            Cloud
-          </button>
-          <button className="px-6 py-2 rounded-full border border-primary-container text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-all">
-            Backend
-          </button>
-          <button className="px-6 py-2 rounded-full border border-primary-container text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-all">
-            Python
-          </button>
+          <div className="btn-octagon-wrapper bg-primary-container drop-shadow-[0_0_8px_rgba(0,212,255,0.4)]">
+            <button className="btn-octagon-inner px-6 py-2 bg-primary-container text-on-primary font-medium text-label-caps">
+              All
+            </button>
+          </div>
+          <div className="btn-octagon-wrapper bg-primary-container/40 hover:bg-primary-container transition-colors">
+            <button className="btn-octagon-inner px-6 py-2 bg-[#0A0A0F] text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-colors">
+              Full-Stack
+            </button>
+          </div>
+          <div className="btn-octagon-wrapper bg-primary-container/40 hover:bg-primary-container transition-colors">
+            <button className="btn-octagon-inner px-6 py-2 bg-[#0A0A0F] text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-colors">
+              Cloud
+            </button>
+          </div>
+          <div className="btn-octagon-wrapper bg-primary-container/40 hover:bg-primary-container transition-colors">
+            <button className="btn-octagon-inner px-6 py-2 bg-[#0A0A0F] text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-colors">
+              Backend
+            </button>
+          </div>
+          <div className="btn-octagon-wrapper bg-primary-container/40 hover:bg-primary-container transition-colors">
+            <button className="btn-octagon-inner px-6 py-2 bg-[#0A0A0F] text-primary-container hover:bg-primary-container/10 font-medium text-label-caps transition-colors">
+              Python
+            </button>
+          </div>
         </div>
       </header>
 
@@ -63,9 +73,11 @@ export default function ProjectsPage() {
                 <span className="material-symbols-outlined text-[20px]">code</span>
                 <span className="text-sm font-label-caps">View Code</span>
               </a>
-              <a className="bg-primary-container text-on-primary px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:opacity-90 transition-opacity" href="#">
-                View on Upwork <span className="material-symbols-outlined text-[18px]">open_in_new</span>
-              </a>
+              <div className="btn-octagon-wrapper bg-primary-container drop-shadow-[0_0_8px_rgba(0,212,255,0.4)]">
+                <a className="btn-octagon-inner bg-primary-container text-on-primary px-5 py-2 text-sm font-bold flex items-center gap-2 hover:bg-primary-container/80 transition-colors" href="#">
+                  View on Upwork <span className="material-symbols-outlined text-[18px]">open_in_new</span>
+                </a>
+              </div>
             </div>
           </div>
           <div className="flex-1 relative mt-4 md:mt-0">
@@ -146,9 +158,11 @@ export default function ProjectsPage() {
               </div>
             </div>
             <div className="flex gap-4">
-              <a className="bg-primary-container text-on-primary px-5 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:opacity-90 transition-opacity" href="#">
-                View Project <span className="material-symbols-outlined text-[18px]">rocket_launch</span>
-              </a>
+              <div className="btn-octagon-wrapper bg-primary-container drop-shadow-[0_0_8px_rgba(0,212,255,0.4)]">
+                <a className="btn-octagon-inner bg-primary-container text-on-primary px-5 py-2 text-sm font-bold flex items-center gap-2 hover:bg-primary-container/80 transition-colors" href="#">
+                  View Project <span className="material-symbols-outlined text-[18px]">rocket_launch</span>
+                </a>
+              </div>
             </div>
           </div>
           <div className="flex-1 relative mt-4 md:mt-0">
@@ -255,9 +269,11 @@ export default function ProjectsPage() {
           <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary-container/5 rounded-full blur-3xl"></div>
           <h3 className="font-headline-md text-2xl text-text-primary mb-4">Have a complex project?</h3>
           <p className="text-on-surface-variant mb-8">I specialize in building production-grade full-stack architectures that scale from day one.</p>
-          <a className="inline-block bg-primary-container text-on-primary px-10 py-4 rounded-lg font-bold text-lg hover:shadow-[0_0_20px_rgba(0,212,255,0.4)] transition-all" href="#">
-            Start a Conversation
-          </a>
+          <div className="btn-octagon-wrapper bg-primary-container drop-shadow-[0_0_15px_rgba(0,212,255,0.4)]">
+            <a className="btn-octagon-inner bg-primary-container text-on-primary px-10 py-4 font-bold text-lg hover:bg-primary-container/80 transition-colors" href="#">
+              Start a Conversation
+            </a>
+          </div>
         </div>
       </div>
     </main>
